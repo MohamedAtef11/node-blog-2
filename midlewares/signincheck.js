@@ -7,7 +7,6 @@ function signinCheck (req, res , next){
     const token = req.cookies.token
 
     if (!token) {
-      console.log("booooooooooooooooooooooooooooooooooooooooooooooooooy");
       return res.status(401).end()
       
     }
@@ -17,11 +16,9 @@ function signinCheck (req, res , next){
       payload = jwt.verify(token, jwtKey)
     } catch (e) {
       if (e instanceof jwt.JsonWebTokenError) {
-        console.log("booooooooooooooooooooooooooooooooooooooooooooooooooy1");
 
         return res.status(401).end()
       }
-      console.log("booooooooooooooooooooooooooooooooooooooooooooooooooy2");
 
       return res.status(400).end()
     }
@@ -33,7 +30,6 @@ function signinCheck (req, res , next){
         expiresIn: jwtExpirySeconds
       })
       res.cookie('token', newToken, { maxAge: jwtExpirySeconds * 1000 })
-            console.log("booooooooooooooooooooooooooooooooooooooooooooooooooy");
 
     }
   

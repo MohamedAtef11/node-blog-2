@@ -8,9 +8,7 @@ const jwtExpirySeconds = 300
 
 router.post('/', async (req , res ,next)=>{
         try {
-            const mail = req.body.mail
-            console.log("lozaaaaaaaaaaaaaaaaaaaaaaa");
-            
+            const mail = req.body.mail            
             const token = jwt.sign({ mail }, jwtKey, {
                algorithm: 'HS256',
                expiresIn: jwtExpirySeconds
